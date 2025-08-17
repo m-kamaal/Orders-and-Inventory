@@ -1,0 +1,30 @@
+# app/
+#   main.py
+#   core/               # settings, deps, error handlers
+#   models/             # Pydantic schemas + ORM entities
+#   repositories/       # DB access functions
+#   services/           # business logic
+#   controllers/        # FastAPI routers (products, orders, webhooks)
+#   schemas/            # Request/response DTOs (if you split from models)
+# tests/
+#   blackbox/           # curl/postman evidence or harness
+#   e2e/
+#   unit/
+# requirements.txt
+# render.yaml (optional)
+# README.md
+
+
+architecture :
+
+Client/Tools (Swagger, curl, Postman, Python script)
+           ↓
+[Routers / Controllers]  — FastAPI endpoints (thin)
+           ↓
+[Services]               — business rules (stock, transitions, webhook)
+           ↓
+[Repository / DB Layer]  — persistence & queries (SQLite/SQLModel or in-memory)
+           ↓
+[Database]               — SQLite (file) OR in-memory dicts
+
+
